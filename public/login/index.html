@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login | SwiftGig - Connecting Gigs with Go-Getters</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../images/icon.png">
+    <script src="../libs/ComponentLib.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="main-wrapper">
+        <div id="login-container">
+            <div>
+                <div class="banner-image">
+                    <img src="../images/icons/user.png" alt="">
+                </div>
+                <h1>Sign in to your account</h1>
+                <p>Enter your details to begin changing the world!</p>
+                <div class="text-input">
+                    <input type="text" placeholder="Email Address" id="login-email">
+                    <img src="../images/icons/email.png" alt="">
+                </div>
+                <div class="password-input">
+                    <input type="password" placeholder="Password" id="login-password">
+                    <img src="../images/icons/lock.png" alt="">
+                    <div>
+                        <img src="../images/icons/hidden.png" alt="">
+                    </div>
+                </div>
+                <div class="space-between">
+                    <div class="modal-checkbox">
+                        <div class="custom-checkbox" id="login-check">
+                            <img src="../images/icons/check_thick.png" alt="">
+                        </div>
+                        <p>Stay Signed In</p>
+                    </div>
+                    <h6 style="margin:0;"><span><a href="./?forgot-password" class="text-link">Forgot Password?</a></span></h6>
+                </div>
+                <div id="login-btn" class="button-primary">Sign in</div>
+                <h6>Don't have an account? <span><a href="./?new-user" class="text-link">Create one Now</a>!</span></h6>
+            </div>
+            <div class="carousel">
+
+            </div>
+        </div>
+        <div id="new-user">
+            <div>
+                <div class="banner-image">
+                    <img src="../images/icons/add_user.png" alt="">
+                </div>
+                <h1>Join the SwiftGig Network</h1>
+                <p>Creating an account has never been easier!</p>
+                <div class="double-input">
+                    <input type="text" placeholder="First Name" id="sign-up-first">
+                    <input type="text" placeholder="Last Name" id="sign-up-last">
+                </div>
+                <div class="text-input">
+                    <input type="text" placeholder="Email Address" id="sign-up-email">
+                    <img src="../images/icons/email.png" alt="">
+                </div>
+                <div class="password-input">
+                    <input type="password" placeholder="Password" id="sign-up-password">
+                    <img src="../images/icons/lock.png" alt="">
+                    <div>
+                        <img src="../images/icons/hidden.png" alt="">
+                    </div>
+                </div>
+                <div id="sign-up-btn" class="button-primary">Join Now</div>
+                <h6>Already have an account? <span><a href="./?" class="text-link" style="color:var(--secondary-color)">Sign in Now</a>!</span></h6>
+            </div>
+            <div class="carousel">
+
+            </div>
+        </div>
+        <div id="forgot-password">
+            <div>
+                <div class="banner-image">
+                    <img src="../images/icons/lock.png" alt="">
+                </div>
+                <h1>Forgot your Password?</h1>
+                <p>Don't fret! You'll be back taking gigs in no time!</p>
+                <h6>Remember your password? <span><a href="./?" class="text-link">Sign in Now</a></span></h6>
+            </div>
+            <div class="carousel">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
