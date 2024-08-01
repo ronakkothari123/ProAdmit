@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 :root{
-    --accent-color:#FF5F7A;
-    --accent-color-2:#FB4455;
-    --accent-color-3:#FF7E92;
-    --accent-light:#FFE0E1;
+    --accent-color:#69F500;
+    --accent-color-2:#04F500;
+    --accent-color-3:#D1F500;
+    --accent-light:#D5FAF3;
     --secondary-color:#fcbaa4;
     --secondary-color-2:#a37565;
     --secondary-color-3:#ffd9cc;
@@ -14,12 +14,12 @@
     --text-color-2:black;
     --bg-color-1:white;
     --bg-color-2:#f7f7fa;
-    --border-color:#eeeeef;
+    --border-color:#e3e9ed;
 }
 
 body{
     margin:0;
-    background:var(--bg-color-2);
+    background:var(--bg-color-1);
 }
 
 body * {
