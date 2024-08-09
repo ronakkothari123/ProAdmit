@@ -1,3 +1,7 @@
+body{
+    overflow-x:hidden;
+}
+
 #parent-container{
     display:flex;
     flex-direction:row;
@@ -112,12 +116,12 @@
     gap:12px;
 }
 
-.document-options > img{
+.document-options > img, .document-options > a > img{
     height:18px;
     filter:invert(0.5);
 }
 
-.document-options > img:hover{
+.document-options > img:hover, .document-options > a > img:hover{
     transform:scale(1.1);
     filter:none;
 }
@@ -130,4 +134,10 @@
     right:36px;
     padding:24px;
     border-radius:4px;
+}
+
+#document-viewer > h1{
+    margin:0;
+    width:100%;
+    font-size:48px;
 }
