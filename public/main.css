@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 :root{
-    --accent-color:#3f7c2c;
-    --accent-color-2:#38662a;
-    --accent-color-3:#3c8a24;
-    --accent-light:#f7fff5;
+    --accent-color:#f53644;
+    --accent-color-2:#b61b27;
+    --accent-color-3:#f45f6b;
+    --accent-light:#ffeaec;
     --secondary-color:#bc78f6;
     --secondary-color-2:#db40a7;
     --secondary-color-3:#f5648d;
@@ -19,7 +19,7 @@
 
 body{
     margin:0;
-    background:var(--bg-color-1);
+    background:var(--bg-color-2);
 }
 
 body * {

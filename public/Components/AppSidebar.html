@@ -1,0 +1,261 @@
+<div id="sidebar">
+    <div id="sidebar-top">
+        <div id="sidebar-banner">
+            <img src="../images/icon.png" alt="">
+            <h1>ProAdmit</h1>
+        </div>
+        <div id="sidebar-search-container">
+            <input id="sidebar-search" type="text" placeholder="Search Anything">
+            <img src="../images/icons/search.png" alt="">
+        </div>
+        <a href="../dashboard/" class="sidebar-link">
+            <img src="../images/icons/home.png" alt="">
+            <p>Home</p>
+        </a>
+        <div class="sidebar-break"></div>
+        <a href="../supplementals" class="sidebar-link">
+            <img src="../images/icons/document.png" alt="">
+            <p>Supplementals</p>
+        </a>
+        <a href="../institutions" class="sidebar-link">
+            <img src="../images/icons/university.png" alt="">
+            <p>Institutions</p>
+        </a>
+        <a href="../portfolio" class="sidebar-link">
+            <img src="../images/icons/portfolio.png" alt="">
+            <p>Portfolio</p>
+        </a>
+        <div class="sidebar-break"></div>
+        <a href="../settings" class="sidebar-link">
+            <img src="../images/icons/settings.png" alt="">
+            <p>Settings</p>
+        </a>
+        <a href="../login" class="sidebar-link">
+            <img src="../images/icons/logout.png" alt="">
+            <p>Logout</p>
+        </a>
+    </div>
+    <div id="sidebar-bottom">
+        <div id="sidebar-account-container">
+            <div id="sidebar-pfp">RK</div>
+            <div id="sidebar-account-text">
+                <h1>Ronak Kothari</h1>
+                <p>rk.ronakjkothari@gmail.com</p>
+            </div>
+        </div>
+        <a href="../settings/?upgrade" id="sidebar-upgrade-btn">
+            <img src="../images/icons/crown.png" alt="">
+            <p>Go Premium</p>
+        </a>
+    </div>
+</div>
+<style>
+    #sidebar *::-webkit-scrollbar {
+        width: 8px; /* Adjust the width of the scrollbar */
+    }
+
+    #sidebar *::-webkit-scrollbar-track {
+        background: var(--border-color);
+        border-radius: 10px; /* Adjust the roundness of the track */
+    }
+
+    #sidebar *::-webkit-scrollbar-thumb {
+        background: #a0a0a0;
+        border-radius: 10px; /* Adjust the roundness of the thumb */
+    }
+
+    #sidebar *::-webkit-scrollbar-thumb:hover {
+        background: var(--text-color-1);
+    }
+
+    #sidebar{
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+        width:304px;
+        height:100vh;
+        background:var(--bg-color-1);
+    }
+
+    #sidebar > div{
+        display:flex;
+        flex-direction:column;
+    }
+
+    #sidebar-top{
+        overflow-y:scroll;
+        height:calc(100% - 141px);
+        overflow-x:hidden;
+    }
+
+    #sidebar-bottom{
+        width:256px;
+        padding:24px;
+        gap:24px;
+    }
+
+    #sidebar-banner{
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        width:256px;
+        padding:24px;
+        padding-bottom:0;
+        gap:12px;
+    }
+
+    #sidebar-banner > img{
+        height:28px;
+    }
+
+    #sidebar-banner > h1{
+        font-weight:700;
+        font-size:18px;
+        margin:0;
+    }
+
+    #sidebar-search-container{
+        position:relative;
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        justify-content:flex-start;
+        margin:24px;
+        width:256px;
+    }
+
+    #sidebar-search-container > img{
+        position:absolute;
+        filter:invert(0.625);
+        transition-duration:250ms;
+        left:12px;
+        height:16px;
+    }
+
+    #sidebar-search{
+        width:calc(100% - 52px);
+        border:2px solid var(--border-color);
+        outline:none;
+        height:36px;
+        border-radius:6px;
+        padding-left:36px;
+        padding-right:12px;
+        font-size:14px;
+    }
+
+    #sidebar-search:focus{
+        border:2px solid black;
+    }
+
+    #sidebar-search:focus + img{
+        filter:invert(0);
+    }
+
+    .sidebar-link{
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        text-decoration:none;
+        transition-duration:250ms;
+        width:256px;
+        padding:12px 24px;
+        gap:24px;
+    }
+
+    .sidebar-link > img{
+        height:20px;
+        filter:invert(0.5);
+        transition-duration:250ms;
+    }
+
+    .sidebar-link > p{
+        margin:0;
+        color:gray;
+        font-weight:500;
+        font-size:15px;
+    }
+
+    .sidebar-link:hover{
+        background:var(--border-color);
+    }
+
+    .sidebar-break{
+        width:256px;
+        margin:12px 24px;
+        height:2px;
+        background:var(--border-color);
+    }
+
+    #sidebar-account-container{
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        justify-content:flex-start;
+        gap:12px;
+    }
+
+    #sidebar-pfp{
+        background:var(--accent-light);
+        width:36px;
+        height:36px;
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        justify-content:center;
+        border-radius:6px;
+        font-size:16px;
+        font-weight:500;
+    }
+
+    #sidebar-account-text > h1{
+        font-weight:400;
+        font-size:16px;
+        margin:0;
+    }
+
+    #sidebar-account-text > p{
+        font-weight:400;
+        font-size:14px;
+        color:gray;
+        margin:0;
+    }
+
+    #sidebar-upgrade-btn{
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        justify-content:center;
+        text-decoration:none;
+        background:var(--border-color);
+        width:100%;
+        height:32px;
+        gap:6px;
+        border-radius:6px;
+    }
+
+    #sidebar-upgrade-btn > img{
+        height:12px;
+        filter:invert(0.375);
+    }
+
+    #sidebar-upgrade-btn > p{
+        font-size:14px;
+        color:gray;
+        font-weight:500;
+    }
+
+    #sidebar-upgrade-btn:hover{
+        background:var(--accent-color);
+    }
+
+    #sidebar-upgrade-btn:hover > p{
+        color:white;
+    }
+
+    #sidebar-upgrade-btn:hover > img{
+        filter:invert(1);
+    }
+</style>
+<script>
+
+</script>
