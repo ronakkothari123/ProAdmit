@@ -1,9 +1,9 @@
 <div id="sidebar">
     <div id="sidebar-top">
-        <div id="sidebar-banner">
+        <a href="../dashboard/" id="sidebar-banner">
             <img src="../images/icon.png" alt="">
             <h1>ProAdmit</h1>
-        </div>
+        </a>
         <div id="sidebar-search-container">
             <input id="sidebar-search" type="text" placeholder="Search Anything">
             <img src="../images/icons/search.png" alt="">
@@ -13,34 +13,35 @@
             <p>Home</p>
         </a>
         <div class="sidebar-break"></div>
-        <a href="../supplementals" class="sidebar-link">
+        <a href="../supplementals/" class="sidebar-link">
             <img src="../images/icons/document.png" alt="">
             <p>Supplementals</p>
         </a>
-        <a href="../institutions" class="sidebar-link">
+        <a href="../institutions/" class="sidebar-link">
             <img src="../images/icons/university.png" alt="">
             <p>Institutions</p>
         </a>
-        <a href="../portfolio" class="sidebar-link">
+        <a href="../portfolio/" class="sidebar-link">
             <img src="../images/icons/portfolio.png" alt="">
             <p>Portfolio</p>
+            <img src="../images/icons/crown.png" alt="">
         </a>
         <div class="sidebar-break"></div>
-        <a href="../settings" class="sidebar-link">
+        <a href="../settings/" class="sidebar-link">
             <img src="../images/icons/settings.png" alt="">
             <p>Settings</p>
         </a>
-        <a href="../login" class="sidebar-link">
+        <a href="../login/" class="sidebar-link">
             <img src="../images/icons/logout.png" alt="">
             <p>Logout</p>
         </a>
     </div>
     <div id="sidebar-bottom">
         <div id="sidebar-account-container">
-            <div id="sidebar-pfp">RK</div>
+            <div id="sidebar-pfp"></div>
             <div id="sidebar-account-text">
-                <h1>Ronak Kothari</h1>
-                <p>rk.ronakjkothari@gmail.com</p>
+                <h1 id="sidebar-name"></h1>
+                <p id="sidebar-email"></p>
             </div>
         </div>
         <a href="../settings/?upgrade" id="sidebar-upgrade-btn">
@@ -74,7 +75,8 @@
         justify-content:space-between;
         width:304px;
         height:100vh;
-        background:var(--bg-color-1);
+        background:rgba(255,255,255,0.8);
+        backdrop-filter:blur(6px);
     }
 
     #sidebar > div{
@@ -101,6 +103,7 @@
         width:256px;
         padding:24px;
         padding-bottom:0;
+        text-decoration:none;
         gap:12px;
     }
 
@@ -157,12 +160,13 @@
         align-items:center;
         text-decoration:none;
         transition-duration:250ms;
-        width:256px;
+        width:252px;
         padding:12px 24px;
+        border-left:4px solid transparent;
         gap:24px;
     }
 
-    .sidebar-link > img{
+    .sidebar-link > img:nth-of-type(1){
         height:20px;
         filter:invert(0.5);
         transition-duration:250ms;
@@ -175,8 +179,31 @@
         font-size:15px;
     }
 
+    .sidebar-link > img:nth-of-type(2){
+        height:14px;
+        filter:invert(0.5);
+        margin-left:-12px;
+        transition-duration:0ms;
+    }
+
     .sidebar-link:hover{
-        background:var(--border-color);
+        border-left:4px solid var(--accent-color);
+    }
+
+    .sidebar-link:hover > img:nth-of-type(2){
+        filter: invert(56%) sepia(100%) saturate(3889%) hue-rotate(326deg) brightness(86%) contrast(127%);
+    }
+
+    .active-sidebar-link{
+        border-left:4px solid var(--text-color-1);
+    }
+
+    .active-sidebar-link > p{
+        color:var(--text-color-1);
+    }
+
+    .active-sidebar-link > img{
+        filter:invert(0) !important;
     }
 
     .sidebar-break{
@@ -184,6 +211,7 @@
         margin:12px 24px;
         height:2px;
         background:var(--border-color);
+        border-radius:1px;
     }
 
     #sidebar-account-container{
@@ -195,7 +223,7 @@
     }
 
     #sidebar-pfp{
-        background:var(--accent-light);
+        background:var(--bg-color-1);
         width:36px;
         height:36px;
         display:flex;
@@ -204,7 +232,8 @@
         justify-content:center;
         border-radius:6px;
         font-size:16px;
-        font-weight:500;
+        font-weight:600;
+        color:white;
     }
 
     #sidebar-account-text > h1{
@@ -257,5 +286,97 @@
     }
 </style>
 <script>
+    function removeAllChildren(element, elementType) {
+        // Convert NodeList to array for safe iteration while modifying the DOM
+        const children = Array.from(element.childNodes);
+
+        // Iterate over all child nodes
+        for (const child of children) {
+            if (!elementType) {
+                // Remove all children if no elementType is specified
+                element.removeChild(child);
+            } else if (child.nodeType === Node.ELEMENT_NODE && child.tagName.toLowerCase() === elementType.toLowerCase()) {
+                // Remove child of the specified type
+                element.removeChild(child);
+            }
+        }
+    }
+
+
+    function getToken() {
+        return sessionStorage.getItem('token') || localStorage.getItem('token');
+    }
+
+    function removeToken() {
+        sessionStorage.removeItem('token');
+        localStorage.removeItem('token');
+    }
+
+    async function getUser(){
+        const uuid = getToken();
+
+        const response = await fetch(`https://us-central1-proadmit-29198.cloudfunctions.net/app/getUser`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Authorization':`Bearer ${uuid}`
+            },
+            mode: 'cors'
+        }).catch(error => {
+            console.log(error)
+        });
+
+        //if(response.status === 404 || response.status === 403) location.href = "../login";
+
+        const context = await response.json();
+        return context;
+    }
+
+    function getInitials(str) {
+        // Trim the string to remove any leading or trailing whitespace
+        let trimmedStr = str.trim();
+
+        // Split the string by spaces into an array of words
+        let words = trimmedStr.split(' ');
+
+        // Get the first and last word from the array
+        let firstWord = words[0];
+        let lastWord = words[words.length - 1];
+
+        // Get the first letter of the first and last word, and convert them to uppercase
+        let initials = firstWord[0].toUpperCase() + lastWord[0].toUpperCase();
+
+        return initials;
+    }
+
+    async function initializeSidebar(){
+        const currentPath = window.location.pathname;
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+        sidebarLinks.forEach(function(link) {
+            const linkPath = new URL(link.href).pathname;
+
+            if (currentPath === linkPath) {
+                link.classList.add('active-sidebar-link');
+            }
+        });
+
+        const user = await getUser();
+        const colors = ["#e56092", "#3cc1a6", "#5697f4", "#f48443", "#cf8ae0"];
+
+        console.log(user);
+
+        document.getElementById("sidebar-pfp").style.background = colors[user.color];
+        document.getElementById("sidebar-pfp").innerHTML = getInitials(user.fullName);
+        document.getElementById("sidebar-name").textContent = user.fullName;
+        document.getElementById("sidebar-email").textContent = user.email;
+    } initializeSidebar();
+
+    document.getElementById('sidebar-search').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            window.location.href = `../search/?query=${this.value}`;
+        }
+    });
 
 </script>

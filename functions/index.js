@@ -55,12 +55,13 @@ app.post('/createUser', async (req, res) => {
             // No user found, proceed with creating a new user
             const createdAt = new Date().toISOString();
             const role = 'user'; // Default role, can be adjusted based on the application's needs
+            const color = Math.floor(Math.random() * 5);
 
             try {
                 // Hash the password before storing it
                 const hash = await bcrypt.hash(password, 10);
                 // Create user data including the hashed password
-                const userData = { fullName, email, password: hash, createdAt, role, onboarding: false };
+                const userData = { fullName, email, password: hash, createdAt, role, onboarding: false, color:color };
 
                 // Add the new user to the database
                 const data = await admin.database().ref('users').push(userData);
@@ -144,6 +145,24 @@ app.delete('/deleteUser', authenticateToken, async (req, res) => {
             // User not found
             res.status(404).send('User not found');
         }
+    });
+});
+
+app.get('/getUser', authenticateToken, (req, res) => {
+    const userId = req.user.userId; // Assuming this was included in the JWT
+
+    const userRef = admin.database().ref('users').orderByChild('userId').equalTo(userId).limitToFirst(1);
+    userRef.once('value', snapshot => {
+        if (snapshot.exists()) {
+            const userData = Object.values(snapshot.val())[0];
+            // Create a copy of userData without the password
+            const {password, ...userWithoutPassword} = userData;
+            res.json(userWithoutPassword);
+        } else {
+            res.status(404).send('User not found');
+        }
+    }).catch(error => {
+        res.status(500).send(`Database read failed: ${error}`);
     });
 });
 

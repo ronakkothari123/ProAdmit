@@ -26,10 +26,8 @@ document.querySelector("#sign-up-btn").addEventListener("click", async function(
         password: document.getElementById("sign-up-password").value
     };
 
-    console.log(userObj);
-
     try {
-        const response = await fetch(`https://proadmit-29198-default-rtdb.firebaseio.com/app/createUser`, {
+        const response = await fetch(`https://us-central1-proadmit-29198.cloudfunctions.net/app/createUser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -40,10 +38,9 @@ document.querySelector("#sign-up-btn").addEventListener("click", async function(
 
         if (!response.ok) {
             throw new Error(`Server error: ${response.status}`);
+        } else {
+            location.href = "../login/"
         }
-
-        const context = await response.json();
-        console.log(context);
     } catch (error) {
         console.error("Error during fetch operation:", error);
     }
@@ -58,7 +55,7 @@ document.getElementById("login-btn").addEventListener("click", async function (e
         keepMeSignedIn: document.getElementById("login-check").classList.contains("checked")
     }
 
-    const response = await fetch(`https://proadmit-29198-default-rtdb.firebaseio.com/app/login`, {
+    const response = await fetch(`https://us-central1-proadmit-29198.cloudfunctions.net/app/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -82,7 +79,7 @@ document.getElementById("login-btn").addEventListener("click", async function (e
             window.sessionStorage.setItem('token', message.token);
         }
 
-        location.href = "../";
+        location.href = "../dashboard/";
 
     } else {
         const text = await response.text();
@@ -116,4 +113,7 @@ document.querySelectorAll('.custom-checkbox').forEach(function(checkbox) {
 
 function initialize(){
     checkURLAndShowElement();
+
+    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
 } initialize();
