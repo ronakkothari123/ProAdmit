@@ -12,6 +12,10 @@
             <img src="../images/icons/home.png" alt="">
             <p>Home</p>
         </a>
+        <a href="../calendar/" class="sidebar-link">
+            <img src="../images/icons/calendar.png" alt="">
+            <p>Calendar</p>
+        </a>
         <div class="sidebar-break"></div>
         <a href="../supplementals/" class="sidebar-link">
             <img src="../images/icons/document.png" alt="">
@@ -51,21 +55,21 @@
     </div>
 </div>
 <style>
-    #sidebar *::-webkit-scrollbar {
+    *::-webkit-scrollbar {
         width: 8px; /* Adjust the width of the scrollbar */
     }
 
-    #sidebar *::-webkit-scrollbar-track {
+    *::-webkit-scrollbar-track {
         background: var(--border-color);
         border-radius: 10px; /* Adjust the roundness of the track */
     }
 
-    #sidebar *::-webkit-scrollbar-thumb {
+    *::-webkit-scrollbar-thumb {
         background: #a0a0a0;
         border-radius: 10px; /* Adjust the roundness of the thumb */
     }
 
-    #sidebar *::-webkit-scrollbar-thumb:hover {
+    *::-webkit-scrollbar-thumb:hover {
         background: var(--text-color-1);
     }
 
@@ -223,7 +227,7 @@
     }
 
     #sidebar-pfp{
-        background:var(--bg-color-1);
+        background:var(--border-color);
         width:36px;
         height:36px;
         display:flex;
@@ -263,7 +267,7 @@
     }
 
     #sidebar-upgrade-btn > img{
-        height:12px;
+        height:14px;
         filter:invert(0.375);
     }
 
@@ -283,6 +287,44 @@
 
     #sidebar-upgrade-btn:hover > img{
         filter:invert(1);
+    }
+
+    #main-wrapper{
+        width:100vw;
+        height:100vh;
+        display:flex;
+        flex-direction:row;
+        align-items:flex-start;
+        justify-content:flex-start;
+        overflow:hidden;
+        /*background-image:url("../images/background/landscape_4.jpg");
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-position:center;*/
+    }
+
+    #parent-container{
+        width:calc(100vw - 400px);
+        overflow-y:scroll;
+        height:100vh;
+        display:flex;
+        flex-direction:column;
+        gap:24px;
+        padding:0 48px;
+    }
+
+    #parent-container > *:first-child{
+        margin-top:48px;
+    }
+
+    #parent-container > *:last-child{
+        margin-bottom:48px;
+    }
+
+    #parent-container > h1{
+        margin:0;
+        font-size:32px;
+        padding:0;
     }
 </style>
 <script>
@@ -327,10 +369,9 @@
             console.log(error)
         });
 
-        //if(response.status === 404 || response.status === 403) location.href = "../login";
+        if(response.status === 404 || response.status === 403) location.href = "../login";
 
-        const context = await response.json();
-        return context;
+        return response.json();
     }
 
     function getInitials(str) {
@@ -345,9 +386,7 @@
         let lastWord = words[words.length - 1];
 
         // Get the first letter of the first and last word, and convert them to uppercase
-        let initials = firstWord[0].toUpperCase() + lastWord[0].toUpperCase();
-
-        return initials;
+        return firstWord[0].toUpperCase() + lastWord[0].toUpperCase();
     }
 
     async function initializeSidebar(){

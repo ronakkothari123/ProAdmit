@@ -246,6 +246,16 @@
     margin-top:12px;
 }
 
+.alert-message{
+    width:calc(100% - 24px);
+    padding:12px;
+    border-radius:6px;
+    color:#a5312e;
+    background:#f6d8d7;
+    font-size:14px;
+    margin-top:12px;
+}
+
 @media(max-width:1160px){
     #main-wrapper > div > div:first-of-type{
         width:calc(60% - 128px);
