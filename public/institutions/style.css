@@ -1,0 +1,56 @@
+#parent-container{
+    position: relative;
+}
+
+#institutions-container{
+    width:calc(50% - 24px);
+    height:150vh;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-start;
+    gap:12px;
+}
+
+#details-container{
+    position:fixed;
+    width:calc(50% - 220px);
+    height:calc(100vh - 96px);
+    border:2px solid var(--border-color);
+    border-radius:12px;
+    right:48px;
+    top:48px;
+}
+
+#institutions-container > p{
+    margin:0;
+    font-size:14px;
+}
+
+.institutions-container, .institution {
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-start;
+}
+
+.institution{
+    width:calc(100% - 48px);
+    border:2px solid var(--border-color);
+    background:var(--bg-color-1);
+    border-radius:12px;
+    padding:24px;
+    gap:12px;
+}
+
+.institution-status{
+    border-radius:4px;
+    font-size:12px;
+    padding:6px 8px;
+    margin:0;
+}
+
+.institution > h1{
+    margin:0;
+    font-size:18px;
+}

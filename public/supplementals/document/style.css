@@ -1,0 +1,134 @@
+.supplemental{
+    display:flex;
+    flex-direction:column;
+    border:2px solid var(--border-color);
+    border-radius:12px;
+    overflow:hidden;
+    width:calc(100% - 4px);
+}
+
+.supplemental-header{
+    width:calc(100% - 48px);
+    padding:24px;
+    background:var(--bg-color-1);
+    border-bottom:2px solid var(--border-color);
+}
+
+.supplemental-header > p{
+    margin:0;
+    font-size:14px;
+    color:var(--text-color-1);
+    font-weight:600;
+}
+
+.supplemental-body{
+    display:flex;
+    flex-direction:row;
+    align-items:flex-start;
+    justify-content:flex-start;
+    border-bottom:2px solid var(--border-color);
+    height:400px;
+}
+
+.supplemental-textarea{
+    outline:none;
+    border:none;
+    background:var(--bg-color-1);
+    border-right:2px solid var(--border-color);
+    width:calc(100% - 450px);
+    height:calc(100% - 48px);
+    font-size:12px;
+    padding:24px;
+    resize:none;
+}
+
+.supplemental-chat-container{
+    display:flex;
+    flex-direction:column;
+    width:400px;
+    overflow-x:hidden;
+    height:100%;
+}
+
+.supplemental-footer{
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: row;
+    align-items:center;
+    justify-content:flex-start;
+    background:var(--bg-color-1);
+    width:calc(100% - 48px);
+    padding:12px 24px;
+    gap:24px;
+}
+
+.supplemental-footer > p{
+    color:gray;
+    font-size:14px;
+    font-weight:500;
+    margin:0;
+}
+
+.supplemental-footer > p > span{
+    font-weight:700;
+    color:var(--text-color-1);
+}
+
+.supplemental-chat{
+    display:flex;
+    flex-direction:column;
+    width:calc(100% - 24px);
+    height:calc(100% - 124px);
+    overflow-y:scroll;
+    padding:12px;
+}
+
+.supplemental-chat-input-container{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    width:calc(100% - 24px);
+    padding:12px;
+    position:relative;
+}
+
+.supplemental-chat-input{
+    resize: none;
+    width:calc(100% - 28px);
+    height:48px;
+    border-radius:6px;
+    outline:none;
+    background:var(--bg-color-1);
+    border:2px solid var(--border-color);
+    font-size:12px;
+    padding:12px;
+}
+
+.supplemental-chat-input:focus{
+    border:2px solid black;
+}
+
+.supplemental-chat-input-container > button{
+    position:absolute;
+    width:36px;
+    height:36px;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    right:12px;
+    bottom:12px;
+    background:transparent;
+    outline:none;
+    border:none;
+    cursor:pointer;
+}
+
+.supplemental-chat-input-container > button > img{
+    height:18px;
+    filter:invert(0.5);
+}
+
+.supplemental-chat-input-container > button:hover > img{
+    filter:invert(0);
+}

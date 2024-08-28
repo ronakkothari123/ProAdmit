@@ -5,7 +5,7 @@
             <h1>ProAdmit</h1>
         </a>
         <div id="sidebar-search-container">
-            <input id="sidebar-search" type="text" placeholder="Search Anything">
+            <input id="sidebar-search" type="text" placeholder="Search Anything...">
             <img src="../images/icons/search.png" alt="">
         </div>
         <a href="../dashboard/" class="sidebar-link">
@@ -309,6 +309,8 @@
         height:100vh;
         display:flex;
         flex-direction:column;
+        align-items:flex-start;
+        justify-content:flex-start;
         gap:24px;
         padding:0 48px;
     }
@@ -325,6 +327,94 @@
         margin:0;
         font-size:32px;
         padding:0;
+    }
+
+    .progress-bar{
+        width:100%;
+        height:16px;
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        position:relative;
+        flex-shrink:0;
+        margin:12px 0;
+    }
+
+    .progress-bar > div:nth-of-type(1){
+        border-top-left-radius:8px;
+        border-bottom-left-radius:8px;
+        height:100%;
+    }
+
+    .progress-bar > div:nth-of-type(2){
+        height:100%;
+    }
+
+    .progress-bar > div:nth-of-type(3){
+        border-top-right-radius:8px;
+        border-bottom-right-radius:8px;
+        height:100%;
+    }
+
+    .progress-bar > div:nth-of-type(4){
+        position:absolute;
+        flex-shrink:0;
+        width:16px;
+        height:16px;
+        z-index:1;
+        border-radius:50%;
+        border:4px solid var(--bg-color-1);
+        box-shadow:0 0 6px 0 lightgray;
+    }
+
+    .positive-progress-bar > div:nth-of-type(1){
+        background:#125215;
+    }
+
+    .positive-progress-bar > div:nth-of-type(2){
+        background: repeating-linear-gradient(
+                -45deg,          /* Diagonal stripes at a 45-degree angle */
+                #9fec8c,        /* Light green color */
+                #9fec8c 3px,   /* Light green stripe width */
+                #2ea02d 3px,   /* Dark green color starts right after the light green */
+                #2ea02d 7px    /* Dark green stripe width */
+        );
+    }
+
+    .positive-progress-bar > div:nth-of-type(3){
+        background:#9fec8c;
+    }
+
+    .positive-progress-bar > div:nth-of-type(4){
+        background:#125215;
+    }
+
+    .negative-progress-bar > div:nth-of-type(1){
+        background:#8e110b;
+    }
+
+    .negative-progress-bar > div:nth-of-type(2){
+        background: repeating-linear-gradient(
+                -45deg,          /* Diagonal stripes at a 45-degree angle */
+                #fccec4,        /* Light green color */
+                #fccec4 3px,   /* Light green stripe width */
+                #f1624d 3px,   /* Dark green color starts right after the light green */
+                #f1624d 7px    /* Dark green stripe width */
+        );
+    }
+
+    .negative-progress-bar > div:nth-of-type(3){
+        background:#fccec4;
+    }
+
+    .negative-progress-bar > div:nth-of-type(4){
+        background:#8e110b;
+    }
+
+    .completed-progress-bar > div:first-of-type{
+        background:#57138a;
+        border-radius:8px;
+        width:100%;
     }
 </style>
 <script>

@@ -15,7 +15,29 @@
     <div id="main-wrapper">
         <div id="sidebar-container"></div>
         <div id="parent-container">
-            <h1>Supplementals</h1>
+            <h1>Supplemental Essays</h1>
+            <div id="supplementals-container">
+                <div id="supplementals-search-container">
+                    <p id="doc-num"></p>
+                    <div>
+                        <div id="document-search-container">
+                            <input type="text" id="document-search" placeholder="Search Documents...">
+                            <img src="../images/icons/search.png" alt="Search Supplemental Essays">
+                        </div>
+                        <div title="Sort by Descending Urgency" class="supplemental-search-btn" onclick="reorderDocumentsByUrgency(true)"><img src="../images/icons/sort_down.png" alt="Sort Supplementals"></div>
+                        <div title="Sort by Ascending Urgency" class="supplemental-search-btn" onclick="reorderDocumentsByUrgency(false)"><img src="../images/icons/sort_up.png" alt="Sort Supplementals"></div>
+                    </div>
+                </div>
+                <div id="documents-list">
+                    <div id="documents-header">
+                        <p>Institution Name</p>
+                        <p>Last Modified</p>
+                        <p>Deadline</p>
+                        <p>Progress</p>
+                    </div>
+                </div>
+            </div>
+            <p>Want to apply to more institutions? <a href="../institutions">Find more institutions</a>.</p>
         </div>
     </div>
     <div id="modal-container">

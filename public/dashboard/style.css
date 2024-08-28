@@ -19,54 +19,6 @@
     margin:0;
 }
 
-#progress-bar{
-    width:100%;
-    height:16px;
-    display:flex;
-    flex-direction:row;
-    align-items:center;
-    position:relative;
-    flex-shrink:0;
-    margin:12px 0;
-}
-
-.positive-progress-bar > div:nth-of-type(1){
-    background:#125215;
-    border-top-left-radius:8px;
-    border-bottom-left-radius:8px;
-    height:100%;
-}
-
-.positive-progress-bar > div:nth-of-type(2){
-    height:100%;
-    background: repeating-linear-gradient(
-            -45deg,          /* Diagonal stripes at a 45-degree angle */
-            #9fec8c,        /* Light green color */
-            #9fec8c 3px,   /* Light green stripe width */
-            #2ea02d 3px,   /* Dark green color starts right after the light green */
-            #2ea02d 7px    /* Dark green stripe width */
-    );
-}
-
-.positive-progress-bar > div:nth-of-type(3){
-    background:#9fec8c;
-    border-top-right-radius:8px;
-    border-bottom-right-radius:8px;
-    height:100%;
-}
-
-.positive-progress-bar > div:nth-of-type(4){
-    position:absolute;
-    flex-shrink:0;
-    width:16px;
-    height:16px;
-    z-index:1;
-    background:#125215;
-    border-radius:50%;
-    border:4px solid var(--bg-color-1);
-    box-shadow:0 0 6px 0 lightgray;
-}
-
 #progress-container > ul {
     margin:0;
 }

@@ -250,10 +250,11 @@
     width:calc(100% - 24px);
     padding:12px;
     border-radius:6px;
-    color:#a5312e;
-    background:#f6d8d7;
+    color:#98316a;
+    background:#fbeef4;
     font-size:14px;
     margin-top:12px;
+    font-weight:500;
 }
 
 @media(max-width:1160px){
