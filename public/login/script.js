@@ -26,23 +26,26 @@ document.querySelector("#sign-up-btn").addEventListener("click", async function(
         password: document.getElementById("sign-up-password").value
     };
 
-    try {
-        const response = await fetch(`https://us-central1-proadmit-29198.cloudfunctions.net/app/createUser`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userObj),
-            mode: 'cors'
-        });
+    const response = await fetch(`https://us-central1-proadmit-29198.cloudfunctions.net/app/createUser`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userObj),
+        mode: 'cors'
+    });
 
-        if (!response.ok) {
-            throw new Error(`Server error: ${response.status}`);
-        } else {
-            location.href = "../login/"
-        }
-    } catch (error) {
-        console.error("Error during fetch operation:", error);
+    const context = response.status;
+    console.log(context);
+
+    if (context === 200) {
+        location.href = "../login/"
+    } else if(context === 400) {
+        document.querySelectorAll(".alert-message")[1].innerHTML = "An account with this email already exists, or the email format is incorrect. Please use a different email or correct the format.";
+        document.querySelectorAll(".alert-message")[1].style.display = 'block';
+    } else {
+        document.querySelectorAll(".alert-message")[1].innerHTML = "Something went wrong on our end. Please try again later.";
+        document.querySelectorAll(".alert-message")[1].style.display = 'block';
     }
 });
 
@@ -81,6 +84,9 @@ document.getElementById("login-btn").addEventListener("click", async function (e
 
         location.href = "../dashboard/";
 
+    } else if(context === 401 || context === 404) {
+        document.querySelectorAll(".alert-message")[0].innerHTML = "Invalid email or password. Please double-check your credentials and try again.";
+        document.querySelectorAll(".alert-message")[0].style.display = 'block';
     } else {
         const text = await response.text();
         console.log(text);

@@ -1,13 +1,87 @@
-#main-wrapper{
-    width:100vw;
-    height:100vh;
+#progress-container{
+    display:flex;
+    flex-direction:column;
+    background:var(--bg-color-1);
+    padding:24px;
+    border-radius:12px;
+    width:calc(100% - 48px);
+    gap:6px;
+}
+
+#progress-container > h1{
+    margin:0;
+    font-size:18px;
+}
+
+#progress-container > p{
+    font-size:14px;
+    color:gray;
+    margin:0;
+}
+
+#progress-bar{
+    width:100%;
+    height:16px;
     display:flex;
     flex-direction:row;
-    align-items:flex-start;
-    justify-content:flex-start;
-    overflow:hidden;
-    /*background-image:url("../images/background/landscape_4.jpg");
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position:center;*/
+    align-items:center;
+    position:relative;
+    flex-shrink:0;
+    margin:12px 0;
+}
+
+.positive-progress-bar > div:nth-of-type(1){
+    background:#125215;
+    border-top-left-radius:8px;
+    border-bottom-left-radius:8px;
+    height:100%;
+}
+
+.positive-progress-bar > div:nth-of-type(2){
+    height:100%;
+    background: repeating-linear-gradient(
+            -45deg,          /* Diagonal stripes at a 45-degree angle */
+            #9fec8c,        /* Light green color */
+            #9fec8c 3px,   /* Light green stripe width */
+            #2ea02d 3px,   /* Dark green color starts right after the light green */
+            #2ea02d 7px    /* Dark green stripe width */
+    );
+}
+
+.positive-progress-bar > div:nth-of-type(3){
+    background:#9fec8c;
+    border-top-right-radius:8px;
+    border-bottom-right-radius:8px;
+    height:100%;
+}
+
+.positive-progress-bar > div:nth-of-type(4){
+    position:absolute;
+    flex-shrink:0;
+    width:16px;
+    height:16px;
+    z-index:1;
+    background:#125215;
+    border-radius:50%;
+    border:4px solid var(--bg-color-1);
+    box-shadow:0 0 6px 0 lightgray;
+}
+
+#progress-container > ul {
+    margin:0;
+}
+
+#progress-container > ul > li{
+    color:gray;
+    font-size:14px;
+}
+
+#progress-container > ul > li > a{
+    color:var(--text-color-1);
+}
+
+#parent-container > h2{
+    margin:0;
+    color:var(--text-color-1);
+    font-size:18px;
 }
